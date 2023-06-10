@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+if __name__ == "__main__":
+    print("This is a script")
 
 
 def print_list_integer(my_list=[]):
