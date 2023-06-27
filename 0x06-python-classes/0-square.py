@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+""" Square Class
+
+This is an empty square class
+Author: Ekwere peter
+
+"""
 
 """ This is a Module """
 
@@ -10,5 +17,3 @@ if __name__ == "__main__":
 class Square:
     """ This is an Empty class """
     pass
-
-
