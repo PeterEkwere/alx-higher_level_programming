@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+
+""" This is a Module """
+
 if __name__ == "__main__":
     """ This will execue if run directly """
     print()
-""" This is a Module """
 
 
 class Square:
@@ -10,4 +12,3 @@ class Square:
     pass
 
 
-# python3 -c 'print(__import__("0-square").Square.__doc__)'
