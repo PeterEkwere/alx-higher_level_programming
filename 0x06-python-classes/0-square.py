@@ -9,7 +9,6 @@ class Square:
     """ This is an Empty class """
     def __init__(self):
         """ Constructor for my Class """
-        pass
 
-# Running the command:
+
 # python3 -c 'print(__import__("0-square").Square.__doc__)'
