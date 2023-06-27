@@ -7,8 +7,7 @@ if __name__ == "__main__":
 
 class Square:
     """ This is an Empty class """
-    def __init__(self):
-        """ Constructor for my Class """
+    pass
 
 
 # python3 -c 'print(__import__("0-square").Square.__doc__)'
