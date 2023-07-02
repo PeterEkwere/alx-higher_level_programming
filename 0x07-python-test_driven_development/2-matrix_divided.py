@@ -8,6 +8,9 @@
 
 
 def matrix_divided(matrix, div):
+    """
+    divides every item in the matrix by div
+    """
     try:
         row_sizes = len(matrix[0])
         j = 1

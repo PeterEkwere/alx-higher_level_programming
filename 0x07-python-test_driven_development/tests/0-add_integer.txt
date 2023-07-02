@@ -38,4 +38,6 @@ Now you can use it:
 
     >>> add_integer(3, '5')
     'b must be an integer'
-
+    
+    >>> add_integer(2.3, None)
+    'b must be an integer'
