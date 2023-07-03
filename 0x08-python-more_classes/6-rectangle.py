@@ -79,3 +79,4 @@ class Rectangle:
     def __del__(self):
         """ __del__ is called when del is used """
         print("Bye rectangle...")
+        Rectangle.number_of_instances -= 1
