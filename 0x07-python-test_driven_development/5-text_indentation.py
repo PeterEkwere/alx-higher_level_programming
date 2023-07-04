@@ -8,12 +8,29 @@
 
 
 def text_indentation(text):
-    for word in text:
-        print(f"{word}", end="")
-        if word == '.' or word == '?' or word == ':':
-            print("")
-            print("")
-        elif word == ' ':
-            print(' ', end='')
-        else:
-             print('', end='')
+    """
+    text_indetation is a function that prints every text excempting [?, :, .]
+
+    Args:
+        Text is a list of characters
+
+    Return:
+        nothing
+    """
+    if not isinstance(text, str):
+        raise TypeError("text must be a string")
+    c = 0
+    while c < len(text) and text[c] == ' ':
+        c += 1
+
+    while c < len(text):
+        print(text[c], end="")
+        if text[c] == "\n" or text[c] in ".?:":
+            if text[c] in ".?:":
+                print("\n")
+            c += 1
+            while c < len(text) and text[c] == ' ':
+                c += 1
+            continue
+        c += 1
+    
