@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-""" Square Class
-
-This is an empty square class
-Author: Ekwere peter
+""" 
+    This is a square class
+    Author: Ekwere peter
 
 """
 
