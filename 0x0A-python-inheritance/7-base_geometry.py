@@ -16,16 +16,12 @@ class BaseGeometry:
         pass
 
     def area(self):
-        """
-        This is a public instance method area
-        """
+        """ This is a public instance method area """
         raise Exception("area{} is not implemented")
 
     def integer_validator(self, name, value):
-        """
-        This is an instance method that validates a value
-        """
-        if not  isinstance(value, int):
+        """ This is an instance method that validates a value """
+        if not isinstance(value, int):
             raise TypeError(f"{name} must be an integer")
         if value <= 0:
             raise ValueError(f"{name} must be greater than 0")
