@@ -1,0 +1,7 @@
+At Holberton School,
+Python"C is fun!"
+ is really important,
+But it can be very hard if:
+- You don't get all Python"C is fun!"
+ic tricks
+- You don't have strong C knowledge.
