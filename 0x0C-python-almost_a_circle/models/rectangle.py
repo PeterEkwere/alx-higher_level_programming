@@ -103,7 +103,14 @@ class Rectangle(Base):
 
     def display(self):
         """ this would Display the instance of the Rectangle """
+        for space in range(self.__y):
+            print("")
         for row in range(self.__height):
+            for space in range(self.__x):
+                print(" ", end="")
             for items in range(self.__width):
                 print("#", end="")
             print("")
+
+    def __str__(self):
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
