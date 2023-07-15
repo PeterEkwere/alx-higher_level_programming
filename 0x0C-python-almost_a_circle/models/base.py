@@ -68,6 +68,28 @@ class Base:
         This is a function that creates and returns an instance
         """
         from models.rectangle import Rectangle
-        dummy = Rectangle(1, 2, 3)
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 2, 3)
+        else:
+            dummy = cls(1)
+        
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        This function loads a list from a json file
+        """
+        filename = f"{cls.__name__}.json"
+        with open(filename, mode='r', encoding='utf-8') as a_file:
+            json_string = a_file.read()
+        
+        json_list = cls.from_json_string(json_string)
+        a_list = []
+        for diction in json_list:
+            dummy = cls.create(**diction)
+            a_list.append(dummy)
+
+        return a_list
+
