@@ -152,10 +152,10 @@ class Rectangle(Base):
         This function would return a dictionary containing all the attributer
         """
         diction = {
-                'x' : self.__x,
-                'y' : self.__y,
-                'id' : self.id,
-                'height' : self.__height,
-                'width' : self.__width
+                'x': self.__x,
+                'y': self.__y,
+                'id': self.id,
+                'height': self.__height,
+                'width': self.__width
                 }
         return diction

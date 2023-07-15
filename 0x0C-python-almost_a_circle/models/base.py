@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
+import sys
 import json
+sys.path.append("..")
 """
     This is a class module
     Author: Peter Ekwere
@@ -28,7 +30,7 @@ class Base:
         """
         This function will return a json string representation of list_dict
         """
-        if list_dictionaries == None or list_dictionaries == []:
+        if list_dictionaries is None or list_dictionaries is []:
             return
         else:
             json_string = json.dumps(list_dictionaries)
@@ -50,3 +52,22 @@ class Base:
         filename = f"{cls.__name__}.json"
         with open(filename, mode='w', encoding="utf-8") as a_file:
             a_file.write(json_string)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """ this function converts the json string """
+        if json_string is None or json_string is []:
+            return
+        else:
+            json_list = json.loads(json_string)
+            return json_list
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        This is a function that creates and returns an instance
+        """
+        from models.rectangle import Rectangle
+        dummy = Rectangle(1, 2, 3)
+        dummy.update(**dictionary)
+        return dummy
