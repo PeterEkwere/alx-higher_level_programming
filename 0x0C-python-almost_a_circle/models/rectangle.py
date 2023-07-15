@@ -113,4 +113,36 @@ class Rectangle(Base):
             print("")
 
     def __str__(self):
-        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+        """ This function overrides the __str__ call """
+        return f"[Rectangle] ({self.id})" \
+               f" {self.__x}/{self.__y} - {self.__width}/{self.__height}"
+
+    def update(self, *args, **kwargs):
+        """ This function Updates The class/instance attr """
+        if len(args) > 0:
+            if args[0] is not None:
+                self.id = args[0]
+        if len(args) > 1:
+            if args[1] is not None:
+                self.__width = args[1]
+        if len(args) > 2:
+            if args[2] is not None:
+                self.__height = args[3]
+        if len(args) > 3:
+            if args[3] is not None:
+                self.__x = args[3]
+        if len(args) > 4:
+            if args[4] is not None:
+                self.__y = args[4]
+        if len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key == 'id':
+                    self.id = value
+                elif key == 'width':
+                    self.__width = value
+                elif key == 'width':
+                    self.__height = value
+                elif key == 'x':
+                    self.__x = value
+                elif key == 'y':
+                    self.__y = value
