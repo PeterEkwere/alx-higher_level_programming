@@ -40,11 +40,13 @@ class Base:
         This will save a json string representation of list_objs to a file
         """
         json_list = []
-        for object in list_objs:
-            json_list.append(object.to_dictionary())
+        if list_objs is None:
+            json_list.append([])
+        else:
+            for object in list_objs:
+                json_list.append(object.to_dictionary())
+            json_string = json.dumps(json_list)
 
-        json_string = json.dumps(json_list)
-        
         filename = f"{cls.__name__}.json"
         with open(filename, mode='w', encoding="utf-8") as a_file:
             a_file.write(json_string)
