@@ -32,9 +32,9 @@ class Rectangle(Base):
         if x < 0:
             raise ValueError("x must be >= 0")
         if not isinstance(y, int):
-            raise TypeError("x must be an integer")
+            raise TypeError("y must be an integer")
         if y < 0:
-            raise ValueError("x must be >= 0")
+            raise ValueError("y must be >= 0")
         super().__init__(id)
         self.__width = width
         self.__height = height
@@ -146,3 +146,16 @@ class Rectangle(Base):
                     self.__x = value
                 elif key == 'y':
                     self.__y = value
+
+    def to_dictionary(self):
+        """
+        This function would return a dictionary containing all the attributer
+        """
+        diction = {
+                'x' : self.__x,
+                'y' : self.__y,
+                'id' : self.id,
+                'height' : self.__height,
+                'width' : self.__width
+                }
+        return diction
