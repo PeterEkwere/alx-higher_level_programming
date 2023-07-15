@@ -127,7 +127,7 @@ class Rectangle(Base):
                 self.__width = args[1]
         if len(args) > 2:
             if args[2] is not None:
-                self.__height = args[3]
+                self.__height = args[2]
         if len(args) > 3:
             if args[3] is not None:
                 self.__x = args[3]
@@ -140,7 +140,7 @@ class Rectangle(Base):
                     self.id = value
                 elif key == 'width':
                     self.__width = value
-                elif key == 'width':
+                elif key == 'height':
                     self.__height = value
                 elif key == 'x':
                     self.__x = value
