@@ -2,6 +2,8 @@
 # -*- encoding: utf-8 -*-
 import sys
 import json
+import csv
+import os
 sys.path.append("..")
 """
     This is a class module
@@ -31,7 +33,7 @@ class Base:
         This function will return a json string representation of list_dict
         """
         if list_dictionaries is None or list_dictionaries is []:
-            return
+            return "[]"
         else:
             json_string = json.dumps(list_dictionaries)
             return json_string
@@ -42,12 +44,12 @@ class Base:
         This will save a json string representation of list_objs to a file
         """
         json_list = []
-        if list_objs is None:
+        if list_objs is None or list_objs is []:
             json_list.append([])
         else:
             for object in list_objs:
                 json_list.append(object.to_dictionary())
-            json_string = json.dumps(json_list)
+            json_string = cls.to_json_string(json_list)
 
         filename = f"{cls.__name__}.json"
         with open(filename, mode='w', encoding="utf-8") as a_file:
@@ -57,7 +59,7 @@ class Base:
     def from_json_string(json_string):
         """ this function converts the json string """
         if json_string is None or json_string is []:
-            return
+            return []
         else:
             json_list = json.loads(json_string)
             return json_list
@@ -72,7 +74,7 @@ class Base:
             dummy = cls(1, 2, 3)
         else:
             dummy = cls(1)
-        
+
         dummy.update(**dictionary)
         return dummy
 
@@ -82,14 +84,65 @@ class Base:
         This function loads a list from a json file
         """
         filename = f"{cls.__name__}.json"
-        with open(filename, mode='r', encoding='utf-8') as a_file:
-            json_string = a_file.read()
-        
-        json_list = cls.from_json_string(json_string)
-        a_list = []
-        for diction in json_list:
-            dummy = cls.create(**diction)
-            a_list.append(dummy)
+        if not os.path.exists(filename):
+            return []
+        else:
+            with open(filename, mode='r', encoding='utf-8') as a_file:
+                json_string = a_file.read()
 
-        return a_list
+            json_list = cls.from_json_string(json_string)
+            a_list = []
 
+            for diction in json_list:
+                dummy = cls.create(**diction)
+                a_list.append(dummy)
+
+            return a_list
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        This Function converts an obj or list of objs to a csv file
+        """
+        if not list_objs:
+            return []
+        else:
+            my_list = []
+            filename = f"{cls.__name__}.csv"
+            if not os.path.exists(filename):
+                return
+            else:
+                if cls.__name__ == 'Rectangle':
+                    field = ['id', 'width', 'height', 'x', 'y']
+                else:
+                    field = ['id', 'size', 'x', 'y']
+
+                    for objects in list_objs:
+                        my_list.append(objects.to_dictionary())
+
+                    with open(filename, mode='w', newline='', encoding='utf-8') as a:
+                        content = csv.DictWriter(a, fieldnames=field)
+                        content.writeheader()
+                        content.writerows(my_list)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        This Function loads objects from a csv file
+        """
+        data = []
+        filename = f"{cls.__name__}.csv"
+        content = ""
+        if not os.path.exists(filename):
+            return []
+        else:
+            with open(filename, mode='r', encoding='utf-8') as a_file:
+                content = csv.DictReader(a_file)
+                conv_line = {}
+                for line in content:
+                    for key, value in line.items():
+                        if key != 'id':
+                            conv_line[key] = int(value)
+                dummy = cls.create(**conv_line)
+                data.append(dummy)
+                return data
