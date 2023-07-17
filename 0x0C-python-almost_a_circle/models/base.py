@@ -120,7 +120,8 @@ class Base:
                     for objects in list_objs:
                         my_list.append(objects.to_dictionary())
 
-                    with open(filename, mode='w', newline='', encoding='utf-8') as a:
+                    with open(filename, mode='w', newline='',
+                              encoding='utf-8') as a:
                         content = csv.DictWriter(a, fieldnames=field)
                         content.writeheader()
                         content.writerows(my_list)
