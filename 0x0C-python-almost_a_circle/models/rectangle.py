@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-import sys
-from models.base import Base
-sys.path.append("..")
 """
     This is a class module
     Author: Peter Ekwere
 
 """
+import sys
+from models.base import Base
+sys.path.append("..")
+
 if __name__ == "__main__":
     """ Do Not run Dirctly """
 
 
 class Rectangle(Base):
-    """
-    This is a child class that would inherit from The base class
-    """
+    """ This is a child class that would inherit from The base class """
     __nb_objects = 0
 
     def __init__(self, width, height, x=0, y=0, id=None):
@@ -148,9 +147,7 @@ class Rectangle(Base):
                     self.__y = value
 
     def to_dictionary(self):
-        """
-        This function would return a dictionary containing all the attributer
-        """
+        """ will return a dictionary containing all the attributer """
         diction = {
                 'x': self.__x,
                 'y': self.__y,

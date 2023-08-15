@@ -4,17 +4,6 @@
     This is a Unittest module
     author: peter exwere
 
-Defines unittests for base.py.
-
-Unittest classes:
-    TestBase_instantiation - line 23
-    TestBase_to_json_string - line 110
-    TestBase_save_to_file - line 156
-    TestBase_from_json_string - line 234
-    TestBase_create - line 288
-    TestBase_load_from_file - line 340
-    TestBase_save_to_file_csv - line 406
-    TestBase_load_from_file_csv - line 484
 """
 import os
 import unittest
@@ -500,6 +489,7 @@ class TestBase_load_from_file_csv(unittest.TestCase):
             pass
 
     def test_load_from_file_csv_first_rectangle(self):
+
         r1 = Rectangle(10, 7, 2, 8, 1)
         r2 = Rectangle(2, 4, 5, 6, 2)
         Rectangle.save_to_file_csv([r1, r2])
@@ -507,6 +497,7 @@ class TestBase_load_from_file_csv(unittest.TestCase):
         self.assertEqual(str(r1), str(list_rectangles_output[0]))
 
     def test_load_from_file_csv_second_rectangle(self):
+
         r1 = Rectangle(10, 7, 2, 8, 1)
         r2 = Rectangle(2, 4, 5, 6, 2)
         Rectangle.save_to_file_csv([r1, r2])
@@ -548,6 +539,7 @@ class TestBase_load_from_file_csv(unittest.TestCase):
     def test_load_from_file_csv_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file_csv([], 1)
+
 
 if __name__ == "__main__":
     unittest.main()

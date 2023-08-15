@@ -1,23 +1,22 @@
 #!/usr/bin/python3
-# -*- encoding: utf-8 -*-
-import sys
-import json
-import csv
-import os
-sys.path.append("..")
+# -*- coding: utf-8 -*-
 """
     This is a class module
     Author: Peter Ekwere
 
 """
+import sys
+import json
+import csv
+import os
+sys.path.append("..")
+
 if __name__ == "__main__":
     """ Do not run Directly """
 
 
 class Base:
-    """
-    This is a base class that would serve as a super class
-    """
+    """ This is a base class that would serve as a super class """
     __nb_objects = 0
 
     def __init__(self, id=None):
@@ -29,9 +28,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """
-        This function will return a json string representation of list_dict
-        """
+        """ will return a json string representation of list_dict """
         if list_dictionaries is None or list_dictionaries is []:
             return "[]"
         else:
@@ -40,9 +37,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """
-        This will save a json string representation of list_objs to a file
-        """
+        """ will save a json string representation of list_objs to  file """
         json_list = []
         if list_objs is None or list_objs is []:
             json_list.append([])
@@ -66,9 +61,7 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        """
-        This is a function that creates and returns an instance
-        """
+        """ This is a function that creates and returns an instance """
         from models.rectangle import Rectangle
         if cls.__name__ == "Rectangle":
             dummy = cls(1, 2, 3)
@@ -80,9 +73,7 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
-        """
-        This function loads a list from a json file
-        """
+        """ This function loads a list from a json fil """
         filename = f"{cls.__name__}.json"
         if not os.path.exists(filename):
             return []
@@ -101,9 +92,7 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """
-        This Function converts an obj or list of objs to a csv file
-        """
+        """ This Function converts an obj or list of objs to a csv file """
         if not list_objs:
             return []
         else:
@@ -120,16 +109,15 @@ class Base:
                     for objects in list_objs:
                         my_list.append(objects.to_dictionary())
 
-                    with open(filename, mode='w', newline='', encoding='utf-8') as a:
+                    with open(filename, mode='w', newline='',
+                              encoding='utf-8') as a:
                         content = csv.DictWriter(a, fieldnames=field)
                         content.writeheader()
                         content.writerows(my_list)
 
     @classmethod
     def load_from_file_csv(cls):
-        """
-        This Function loads objects from a csv file
-        """
+        """ This Function loads objects from a csv file """
         data = []
         filename = f"{cls.__name__}.csv"
         content = ""
