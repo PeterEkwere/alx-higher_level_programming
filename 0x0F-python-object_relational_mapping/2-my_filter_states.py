@@ -23,8 +23,9 @@ if __name__ == "__main__":
             )
 
     cursor = connection.cursor()
-    query = "SELECT * FROM states WHERE name = %s"
-    cursor.execute(query, (sort_by,))
+    query = "SELECT * FROM states WHERE name = '{}'"
+    formated_query = query.format(sort_by)
+    cursor.execute(formated_query)
     query_rows = cursor.fetchall()
     for rows in query_rows:
         if rows[1] == sort_by:
