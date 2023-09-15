@@ -20,11 +20,13 @@ if __name__ == "__main__":
             database=dbname,
             charset="utf8"
             )
+
     cursor = connection.cursor()
     query = "SELECT * FROM states ORDER BY id ASC"
     cursor.execute(query)
     query_rows = cursor.fetchall()
     for rows in query_rows:
-        print(rows)
+        if rows[1][0] == 'N':
+            print(rows)
     cursor.close()
     connection.close()
