@@ -27,7 +27,7 @@ if __name__ == '__main__':
     state_id = State.id
 
     for instance in session.query(State).order_by(state_id):
-        if instance.id == 2:
-            instance.name = 'New Mexico'
+        if 'a' in instance.name:
+            session.delete(instance)
 
     session.commit()
