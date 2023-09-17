@@ -3,16 +3,17 @@
     This is an ORM Script
     Author: Peter Ekwere
 """
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String
+from model_state import Base, State
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
 
-Base = declarative_base()
+class City(Base):
+    """ This is the City Class """
+    __tablename__ = 'cities'
 
+    id = Column(Integer, unique=True, primary_key=True, nullable=False)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
 
-class State(Base):
-    """ This is the State Class """
-    __tablename__ = 'states'
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128))
+    state = relationship('State', back_populates='cities')
