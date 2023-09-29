@@ -11,7 +11,7 @@ if __name__ == "__main__":
     with urllib.request.urlopen(res) as a:
         html = a.read()
         html_string = html.decode()
-        print(f"""Body response:
-        - type: <class '{type(html).__name__}'>
-        - content: {html}
-        - utf8 content: {html_string}""")
+        print("Body response:")
+        print("\t - type: <class '{}'".format(type(html).__name__))
+        print("\t - content: {}".format(html))
+        print("\t - utf8 content: {}".format(html_string))
