@@ -12,6 +12,6 @@ if __name__ == "__main__":
         html = a.read()
         html_string = html.decode()
         print("Body response:")
-        print("\t- type: <class '{}'".format(type(html).__name__))
+        print("\t- type: {}".format(type(html)))
         print("\t- content: {}".format(html))
         print("\t- utf8 content: {}".format(html_string))
