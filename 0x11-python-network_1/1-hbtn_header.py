@@ -10,6 +10,6 @@ import urllib.request
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    response = urllib.request.urlopen(url)
-    value = response.headers.get('X-Request-Id')
-    print(value)
+    with urllib.request.urlopen(url) as response:
+        value = response.headers.get('X-Request-Id')
+        print(value)
