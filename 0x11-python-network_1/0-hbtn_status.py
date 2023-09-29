@@ -15,3 +15,6 @@ print(f"""Body response:
         - type: <class '{type(html).__name__}'>
         - content: {html}
         - utf8 content: {html_string}""")
+
+if __name__ == "__main__":
+    pass
