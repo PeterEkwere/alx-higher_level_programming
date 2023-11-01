@@ -1,0 +1,1 @@
+## This Repo contains basic jquery practices
